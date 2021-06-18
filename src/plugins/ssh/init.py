@@ -103,6 +103,9 @@ def main():
                     os.path.dirname(os.path.abspath(__file__)),
                     " ".join(cmd_params))
         ]
+    #ttyd start
+    ttyd_params = ""
+    command.append("{}/ttyd.sh {}\n".format(os.path.dirname(os.path.abspath(__file__)), ttyd_params))
 
     # ssh barrier
     if jobssh == "true" and "sshbarrier" in parameters and str(
