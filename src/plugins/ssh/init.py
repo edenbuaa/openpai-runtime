@@ -97,8 +97,9 @@ def main():
             try_to_install_by_cache(
                 "ssh",
                 fallback_cmds=[
-                    "apt-get update",
-                    "apt-get install -y openssh-client openssh-server",
+                    #"apt-get update",
+                    #"apt-get install -y openssh-client openssh-server",
+                    "python -mplatform | grep -qi Ubuntu && apt-get update && apt-get install -y openssh-client openssh-server || yum update && yum install -y openssh-client openssh-server",
                 ]), "{}/sshd.sh {}\n".format(
                     os.path.dirname(os.path.abspath(__file__)),
                     " ".join(cmd_params))
