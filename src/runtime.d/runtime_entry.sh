@@ -76,6 +76,12 @@ function reserved_container()
 function exit_handler()
 {
   USER_EXIT_CODE=$?
+   #-----------debug------------
+  echo 'exit_code: ' $USER_EXIT_CODE
+  echo 'container_exit_code: ' $CONTAINER_EXIT_CODE
+
+  reserved_container
+  #----------------------------
   if [[ $USER_EXIT_CODE -eq 0 ]]; then
     exit 0
   fi
@@ -116,12 +122,7 @@ function exit_handler()
   if [[ -f ${TERMINATION_MESSAGE_PATH} ]]; then
     cp ${TERMINATION_MESSAGE_PATH} ${RUNTIME_LOG_DIR}
   fi
-  #-----------debug------------
-  echo 'exit_code: ' $USER_EXIT_CODE
-  echo 'container_exit_code: ' $CONTAINER_EXIT_CODE
-
-  reserved_container
-  #----------------------------
+ 
   exit ${CONTAINER_EXIT_CODE}
 }
 
