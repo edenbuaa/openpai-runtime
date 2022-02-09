@@ -52,7 +52,7 @@ function log()
 function reserved_container()
 {
 	# reserve failed contaier
-	export isDebug = true #for test
+	export isDebug=true #for test
 
 	# ==== debug info =====
 	echo 'exit_code: ' $USER_EXIT_CODE
