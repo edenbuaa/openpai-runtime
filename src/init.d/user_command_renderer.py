@@ -53,7 +53,7 @@ def main():
     LOGGER.info("not rendered user command is %s", user_command)
     
     # for debug.fly
-    user_command = user_command +"\r\n echo \"======   The job container failed, so it will be reserved for 1 week   ======\""
+    user_command = user_command +" \\ echo \"======   The job container failed, so it will be reserved for 1 week   ======\""
     
     rendered_user_command = render_string_with_secrets(user_command, secrets)
     _output_user_command(rendered_user_command, args.output_file)
