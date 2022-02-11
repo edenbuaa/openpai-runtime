@@ -79,7 +79,9 @@ function exit_handler()
    #-----------debug------------
   echo 'exit_code: ' $USER_EXIT_CODE
    # echo 'container_exit_code: ' $CONTAINER_EXIT_CODE
-
+  # we need to write the reserve notify log to stdout
+  echo "======   The job container failed, so it will be reserved for 10 minutes   ======" >> ${USER_STDOUT_LOG_DIR}/current
+ 
   reserved_container
   #----------------------------
   if [[ $USER_EXIT_CODE -eq 0 ]]; then
