@@ -52,15 +52,13 @@ function log()
 function reserved_container()
 {
 	# reserve failed contaier
-	export isDebug=true #for test
-
+	
 	# ==== debug info =====
-	echo 'exit_code: ' $USER_EXIT_CODE
-	echo 'isdebug: ' $isDebug 
+	[[ -z "${PAI_JOB_DEBUG}" ]] && is_debug=false || is_debug="${PAI_JOB_DEBUG}"
+	
+	if $is_debug && [[ $USER_EXIT_CODE -ne 0 ]]; then
 
-	if $isDebug && [[ $USER_EXIT_CODE -ne 0 ]]; then
-
-	  sleep_time=300
+	  sleep_time=1800 # reserve seconds,default 30min
 	  sleep_count=0
 
 	  while [ "$sleep_count" -lt "$sleep_time" ]; do
@@ -80,7 +78,8 @@ function exit_handler()
   echo 'exit_code: ' $USER_EXIT_CODE
    # echo 'container_exit_code: ' $CONTAINER_EXIT_CODE
   # we need to write the reserve notify log to stdout
-  echo "======   The job container failed, so it will be reserved for 10 minutes   ======" >> ${USER_STDOUT_LOG_DIR}/current
+  echo "======   任务已运行失败，资源将驻留30分钟后释放   ======" >> ${USER_STDOUT_LOG_DIR}/current
+  echo "DebugCode:120"
  
   reserved_container
   #----------------------------
