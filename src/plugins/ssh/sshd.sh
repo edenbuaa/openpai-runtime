@@ -112,7 +112,11 @@ function start_ssh()
 {
   printf "%s %s\n" \
     "[INFO]" "start ssh service"
-  service ssh restart
+  if [ "$isCentos" = false ];then
+    service ssh restart
+  else
+    echo 'no ssh for centos'
+  fi 
 }
 
 if [ -f /usr/sbin/sshd ] ; then
