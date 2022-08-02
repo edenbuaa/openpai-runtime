@@ -111,12 +111,8 @@ function prepare_custom_user_ssh()
 function start_ssh()
 {
   printf "%s %s\n" \
-    "[INFO]" "start ssh service"
-  if [ "$isCentos" = false ];then
-    service ssh restart
-  else
-    echo 'no ssh for centos'
-  fi 
+    "[INFO]" "start ssh service"  
+    service ssh restart  
 }
 
 if [ -f /usr/sbin/sshd ] ; then
