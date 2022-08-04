@@ -107,7 +107,21 @@ def main():
     #ttyd start
     ttyd_params = ""
     command.append("{}/ttyd.sh {}\n".format(os.path.dirname(os.path.abspath(__file__)), ttyd_params))
+    # we place the vscode and filebrowser plugin here for simple development and hard code
+    # TODO: move this section to ../vscode and ../filebrowser with init.py and desc.yml rules
+    # //start
+    sfe_vscode = os.environ.get("PAI_JOB_VSCODE","false")
+    sfe_filebrowser = os.environ.get("PAI_JOB_FILEBROWSER","false")
+    basePath = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
+    if sfe_vscode == "true":
+        command.append("{}/vscode/vscode.sh {}\n".format(basePath, ""))
+
+    if sfe_filebrowser == "true":
+        command.append("{}/filebrowser/filebrowser.sh {}\n".format(basePath, ""))
+    
+    # //end
+    
     # ssh barrier
     if jobssh == "true" and "sshbarrier" in parameters and str(
             parameters["sshbarrier"]).lower() == "true":
