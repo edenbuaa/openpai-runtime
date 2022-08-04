@@ -72,5 +72,7 @@ RUN chmod -R +x ./
 
 # This line should be removed after using k8s client to interact with api server
 RUN apk update && apk add --no-cache curl git
+# specific the markupsafe version to avoid init error in tensorboard
+RUN pip install markupsafe==2.0.1
 
 CMD ["/bin/sh", "-c", "set -o pipefail && LOG_DIR=/usr/local/pai/logs/${FC_POD_UID} && mkdir -p ${LOG_DIR} && /kube-runtime/src/init 2>&1 | tee -a ${LOG_DIR}/init.log"]
