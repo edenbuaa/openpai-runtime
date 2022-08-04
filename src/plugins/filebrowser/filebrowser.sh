@@ -16,4 +16,4 @@ ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser config init
 
 ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser config set --auth.method=noauth
 
-nohup ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser -p $SFE_WEB_FILEBROWSER_PORT -a 0.0.0.0  -r /mnt  &
+nohup ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser -p $SFE_WEB_FILEBROWSER_PORT -a 0.0.0.0  -r /mnt -b /filebrowser/svc-$FC_POD_NAME &
