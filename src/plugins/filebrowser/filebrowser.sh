@@ -16,4 +16,4 @@ ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser config init
 
 ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser config set --auth.method=noauth
 
-nohup ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser -p $SFE_WEB_FILEBROWSER_PORT -a 0.0.0.0 -d ${PAI_WORK_DIR}/plugins/filebrowser -r /mnt  bash > /var/log/filebrowser.log 2>&1 &
+nohup ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser -p $SFE_WEB_FILEBROWSER_PORT -a 0.0.0.0  -r /mnt  &
