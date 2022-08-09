@@ -20,4 +20,4 @@ ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser config set --auth.method=noauth 
 
 ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser users update sfe --perm.download=false --locale=zh-cn
 
-nohup ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser -p $SFE_WEB_FILEBROWSER_PORT -a 0.0.0.0 -d ${PAI_WORK_DIR}/plugins/filebrowser -r /mnt -b /filebrowser/svc-$FC_POD_NAME  &
+nohup ${PAI_WORK_DIR}/plugins/filebrowser/filebrowser -p $SFE_WEB_FILEBROWSER_PORT -a 0.0.0.0 -r /mnt -b /filebrowser/svc-$FC_POD_NAME  &
