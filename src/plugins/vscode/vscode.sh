@@ -10,4 +10,4 @@ echo "start vscode"
 
 dpkg -i ${PAI_WORK_DIR}/plugins/vscode/code-server_4.5.1_amd64.deb
 rm -f ${PAI_WORK_DIR}/plugins/vscode/code-server_4.5.1_amd64.deb
-nohup code-server --host 0.0.0.0 --user-data-dir=/mnt --disable-file-downloads=true --port $SFE_WEB_VSCODE_PORT bash > /var/log/vscode.log 2>&1 &
+nohup code-server --host 0.0.0.0 --user-data-dir=/mnt --disable-file-downloads=true --auth=none --port $SFE_WEB_VSCODE_PORT bash > /var/log/vscode.log 2>&1 &
