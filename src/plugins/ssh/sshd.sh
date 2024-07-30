@@ -42,7 +42,9 @@ function prepare_ssh()
   echo "sshd:ALL" >> /etc/hosts.allow
 
   # Set user environment
-  env > ${SSH_DIR}/environment
+  # env > ${SSH_DIR}/environment
+  # reduce the enviroment file size.or will occaure a error when transfor these env data, and the ssh function can not work well finnaly.
+  env | grep -v '^SVC_' > ${SSH_DIR}/environment
 }
 
 function prepare_job_ssh()
